@@ -6,6 +6,10 @@ private:
 	bool useKeypad;
 
 public:
-	std::pair<int, int> getSettings();
+	// Getter functions
 	std::pair<int, int> getDefaults();
+	bool getKeyPadOption();
+
+	// Getter and Setter function
+	std::pair<int, int> getSettings();
 };

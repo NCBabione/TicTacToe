@@ -80,14 +80,24 @@ std::pair<int, int> setup::getSettings() {
 		std::cin >> inputChar;
 		useKeypad = yncheck.check(inputChar);
 	}
+	else {
+		useKeypad = true;
+	}
 
 	// Return the pair
 	return returnPair;
 }
 
+// Default getter function
 std::pair<int, int> setup::getDefaults() {
 	std::pair<int, int> myPair;
 	myPair.first = 1;
 	myPair.second = 1;
+	useKeypad = true;
 	return myPair;
+}
+
+// Keypad getter function
+bool setup::getKeyPadOption() {
+	return useKeypad;
 }
