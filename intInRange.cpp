@@ -7,5 +7,6 @@ bool intInRange::checkRange(int low, int high, int toCheck) {
 	}
 
 	std::cout << "Given input is out of range! Input must be between " << low << " and " << high << std::endl;
+	std::cout << "Reenter input" << std::endl;
 	return false;
 }

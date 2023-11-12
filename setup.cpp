@@ -4,6 +4,7 @@
 #include "YNCheck.h"
 #include "intInRange.h"
 #include <ctype.h>
+#include <string>
 
 std::pair<int, int> setup::getSettings() {
 	// Initialize YNCheck class
@@ -20,41 +21,42 @@ std::pair<int, int> setup::getSettings() {
 	std::pair<int, int> returnPair;
 
 	// Get settings from user
-	std::cout << "Players? (1 or 2): ";
 	char temp;
 	int tempInt;
-	std::cin >> temp;
-
-	// Set the number of players
-	if (isdigit(temp)) {
-		tempInt = (int)temp;
-		if (intRange.checkRange(1, 2, tempInt)) {
-			players = tempInt;
+	
+	bool validPlayers = false;
+	while (!validPlayers) {
+		// Set the number of players
+		std::cout << "Players? (1 or 2): ";
+		std::cin >> temp;
+		if (isdigit(temp)) {
+			tempInt = int(temp) - 48;
+			if (intRange.checkRange(1, 2, tempInt)) {
+				players = tempInt;
+				validPlayers = true;
+			}
 		}
 		else {
-			players = 1;
+			std::cout << "Sorry, not a digit, reenter" << std::endl;
 		}
 	}
-	else {
-		players = 1;
-	}
-
-	// Set the first player
-	std::cout << "Who's first? (1 or 2): ";
-	std::cin >> temp;
-	if (isdigit(temp)) {
-		tempInt = (int)temp;
-		if (intRange.checkRange(1, 2, tempInt)) {
-			firstPlayer = tempInt;
+	
+	bool validFirst = false;
+	while (!validFirst) {
+		// Set the first player
+		std::cout << "Who's first? (1 or 2): ";
+		std::cin >> temp;
+		if (isdigit(temp)) {
+			tempInt = int(temp) - 48;
+			if (intRange.checkRange(1, 2, tempInt)) {
+				firstPlayer = tempInt;
+				validFirst = true;
+			}
 		}
 		else {
-			firstPlayer = 1;
+			std::cout << "Sorry, not a digit, reenter" << std::endl;
 		}
 	}
-	else {
-		firstPlayer = 1;
-	}
-
 
 	// Set pair values
 	returnPair.first = players;
